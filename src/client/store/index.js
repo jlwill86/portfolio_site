@@ -1,18 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import authReducer from "../features/auth/authSlice";
+import authReducer from "../auth/AuthSlice";
 import api from "./api";
-// import { favoritesApi } from "../features/Account/favorites/favSlice";
-// import followsApi from "../features/Account/follows/followSlice";
+
 
 const store = configureStore({
   reducer: {
      [api.reducerPath]: api.reducer,
-    // [favoritesApi.reducerPath]: favoritesApi.reducer,
-    // [followsApi.reducerPath]: followsApi.reducer,
-    // auth: authReducer,
+    auth: authReducer,
   },
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(api.middleware, favoritesApi.middleware, followsApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export default store;

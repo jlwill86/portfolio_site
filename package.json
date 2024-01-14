@@ -12,6 +12,10 @@
     "start": "node src/server",
     "preview": "vite preview"
   },
+  "prisma": {
+    "schema": "src/server/prisma/schema.prisma",
+    "seed": "node src/server/prisma/seed.js"
+  },
   "dependencies": {
     "@prisma/engines": "^5.8.0",
     "@reduxjs/toolkit": "^2.0.1",

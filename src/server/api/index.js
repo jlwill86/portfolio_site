@@ -26,3 +26,5 @@ router.use(async (req, res, next) => {
   }
 });
 
+router.use("/auth", require("./auth"));
+router.use("/user", require("./users"));
