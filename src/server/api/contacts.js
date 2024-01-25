@@ -3,15 +3,15 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 
 
-router.get("/:id", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
     try {
         const id = +req.params.id;
-        const contact = await prisma.contact.findUnique({ where: { id } });
+        const contact = await prisma.contact.findMany();
 
         if (!contact) {
             return next({
                 status: 404,
-                message: `Could not find contact with id ${id}.`,
+                message: `Could not find contacts.`,
             });
         }
         res.json(contact);
@@ -49,3 +49,35 @@ router.put("/:id", async (req, res, next) => {
         next(err);
     }
 });
+
+router.post("/", async (req, res, next) => {
+    try {
+        const newContact = await prisma.contact.create({
+            data: req.body,
+        });
+        res.json(newContact);
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.delete("/:id", async (req, res, next) => {
+    try {
+        const id = +req.params.id;
+        const contact = await prisma.contact.findUnique({ where: { id } });
+
+        if (!contact) {
+            return next({
+                status: 404,
+                message: `Could not find contact with id ${id}.`,
+            });
+        }
+
+        await prisma.contact.delete({ where: { id } });
+        res.json(contact);
+    } catch (err) {
+        next(err);
+    }
+});
+
+module.exports = router;
