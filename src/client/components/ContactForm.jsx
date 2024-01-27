@@ -10,12 +10,36 @@ export default function ContactForm() {
     const [phone, setPhone] = useState("");
     const [message, setMessage] = useState("");
 
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
     const [addContact, { isLoading: addContactLoading, error: addContactError }] = useAddContactMutation();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await addContact({ name, company, email, phone, message }).unwrap();
+            setName("");
+            setCompany("");
+            setEmail("");
+            setPhone("");
+            setMessage("");
+            setIsSubmitted(true);
+        } catch (err) {
+            console.error("Failed to submit the form: ", err);
+        }
+    };
 
     return (
         <div>
             <h1>Contact Form</h1>
-            <form id="contactForm" onSubmit={addContact} >
+            
+            {isSubmitted ? (
+            <p>Thank you for your message. I will get back to you soon.</p>
+        ) : (
+            <>
+            <p>
+                Please fill out the form below to contact me.
+            </p>
+            <form id="contactForm" onSubmit={handleSubmit} >
                 <label className="name-label">
                     Name
                     <input
@@ -58,6 +82,8 @@ export default function ContactForm() {
                 </label>
                 <button type="submit">Submit</button>
             </form>
+            </>
+        )}
         </div>
     )
 }

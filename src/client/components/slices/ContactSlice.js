@@ -1,4 +1,5 @@
 import api from "../../store/api";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const contactApi = api.injectEndpoints({
     endpoints: (builder) => ({
@@ -7,10 +8,11 @@ const contactApi = api.injectEndpoints({
         providesTags: ["Contact"],
         }),
         addContact: builder.mutation({
-        query: (contact) => ({
-            url: "/contact",
+        query: (newContact) => ({
+            url: "/contact/add",
             method: "POST",
-            body: contact,
+            body: newContact,
+            
         }),
         invalidatesTags: ["Contact"],
         }),

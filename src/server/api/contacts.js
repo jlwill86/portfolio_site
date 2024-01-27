@@ -1,7 +1,7 @@
 const { ServerError } = require("../errors");
 const prisma = require("../prisma");
 const router = require("express").Router();
-
+module.exports = router;
 
 router.get("/", async (req, res, next) => {
     try {
@@ -50,16 +50,60 @@ router.put("/:id", async (req, res, next) => {
     }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/add", async (req, res, next) => {
     try {
+        
+        const { name, email, company, phone, message } = req.body;
+        if (!name) {
+            return next({
+                status: 400,
+                message: "Name is required.",
+            });
+        }
+        
+        if (!email) {
+            return next({
+                status: 400,
+                message: "Email is required.",
+            });
+        }
+        
+        if (!company) {
+            return next({
+                status: 400,
+                message: "Company is required.",
+            });
+        }
+        
+        if (!phone) {
+            return next({
+                status: 400,
+                message: "Phone is required.",
+            });
+        }
+        
+        if (!message) {
+            return next({
+                status: 400,
+                message: "Message is required.",
+            });
+        }
         const newContact = await prisma.contact.create({
-            data: req.body,
+            data: {
+                name,
+                email,
+                company,
+                phone,
+                message
+            },
         });
         res.json(newContact);
     } catch (err) {
         next(err);
     }
 });
+
+
 
 router.delete("/:id", async (req, res, next) => {
     try {
@@ -80,4 +124,3 @@ router.delete("/:id", async (req, res, next) => {
     }
 });
 
-module.exports = router;
