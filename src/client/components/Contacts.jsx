@@ -32,9 +32,10 @@ export default function Contacts() {
         <div key={contact.id} className="contactsMainDiv">
           <div className={`contactDiv ${displayedContacts ? "expanded" : ""}`} >
             <button className="deleteContact" onClick={() => handleDelete(contact.id)}>X</button>
-            <h3>{contact.fullName} {contact.company} </h3>
+            <h3>{contact.company} </h3>
             {displayedContacts[contact.id] && (
               <div className="contactDetails">
+                <p>{contact.name}</p>
                 <p>{contact.email}</p>
                 <p>{contact.phone}</p>
                 <p>{contact.message}</p>

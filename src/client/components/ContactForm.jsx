@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAddContactMutation } from "./slices/ContactSlice";
 
 export default function ContactForm() {
@@ -29,7 +28,7 @@ export default function ContactForm() {
     };
 
     return (
-        <div>
+        <div id="contactFormDiv">
             <h1>Contact Form</h1>
             
             {isSubmitted ? (
@@ -48,7 +47,7 @@ export default function ContactForm() {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
-                <label className="company-label">
+                <label className="contactForm-company">
                     Company
                     <input
                         type="text"
@@ -56,7 +55,7 @@ export default function ContactForm() {
                         onChange={(e) => setCompany(e.target.value)}
                     />
                 </label>
-                <label className="email-label">
+                <label className="contactForm-email">
                     Email
                     <input
                         type="text"
@@ -64,7 +63,7 @@ export default function ContactForm() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </label>
-                <label className="phone-label">
+                <label className="contactForm-phone">
                     Phone
                     <input
                         type="text"
@@ -72,7 +71,7 @@ export default function ContactForm() {
                         onChange={(e) => setPhone(e.target.value)}
                     />
                 </label>
-                <label className="message-label">
+                <label className="contactForm-message">
                     Message
                     <input
                         type="text"
@@ -80,7 +79,7 @@ export default function ContactForm() {
                         onChange={(e) => setMessage(e.target.value)}
                     />
                 </label>
-                <button type="submit">Submit</button>
+                <button id="contactFormSubmit" type="submit">Submit</button>
             </form>
             </>
         )}

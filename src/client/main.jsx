@@ -11,6 +11,7 @@ import './styling/index.css'
 import './styling/Homepage.less'
 import './styling/Account.less'
 import './styling/Contact.less'
+import './styling/AuthForm.less'
 import router from './router.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,16 +1,33 @@
 #login-div {
-  /* display: flex; */
+  display: flex;
+  flex-direction: column;
   align-self: center;
-  justify-self: center;
+  justify-content: center;
+
+  align-items: center;
   text-align: center;
-  margin-top: 10em;
   background-color: #455d7a;
-  min-height: 40vh;
-  padding: 10px;
+  height: 100%;
   color: whitesmoke;
-  border-radius: 3%;
-  box-shadow: slategray 3px 3px 8px;
+  
+  // box-shadow: slategray 3px 3px 8px;
+
 }
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  width: 650px;
+   height: 300px;
+  box-shadow: lighten(#455d7a, 25%) 3px 3px 8px;
+  margin-bottom: 10px;
+  border-radius: 3%;
+  background-color: darken(#455d7a, 10%);
+  }
+  
 
 .username-label,
 .password-label {
@@ -64,10 +81,6 @@
   margin-left: 10px;
 }
 
-#lastname {
-  /* position: absolute;
-  left: 300px; */
-}
 
 
 
