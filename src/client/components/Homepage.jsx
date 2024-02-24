@@ -14,7 +14,7 @@ export default function Homepage() {
                 <li className="homeCardLi">Tradetivity
                 <Link to="https://tradetivity.onrender.com/" target="blank">
                 <div className="homeCards">
-                   <img src="src/assets/2024-02-23_22-36-02.jpg" alt="" />
+                   <img src="src/assets/tradetivity image.jpg" alt="" />
                 </div>
                 </Link>
                 </li>
